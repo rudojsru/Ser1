@@ -23,13 +23,13 @@ public class Main {
         Row row = sheet.getRow(0);
 
         TextWriterReader textWriterReader = new TextWriterReader();
-        List l = textWriterReader.listModifiPhone(); // List from TextWriter
+        List l = textWriterReader.listModifiPhone(); // List from TextWriter   просто вытягивает список телефонов из текстового файла
         System.out.println(l);
-        for (int i = 0; i < l.size(); i++) {     // List size for беребрать evry elements
+        for (int i = 0; i < l.size(); i++) {     // List size переберает каждый элемент из листа (текстового файла)
             String listWordText = (String) l.get(i);
             //       System.out.println(listWordText+"-------------------");
             String numberOrTextFromList[] = listWordText.split("");
-            if ((numberOrTextFromList[0].equals("0") != true) && (numberOrTextFromList[1].equals("7") != true)) {
+            if ((numberOrTextFromList[0].equals("0") != true) && (numberOrTextFromList[1].equals("7") != true)) { // если это не цифра то ищем столбец в экселе таблице
                 for (int c = 0; c < numerCell; c++) {   // потом в С поставить 1   с=1
                     String nameList = String.valueOf(sheet.getRow(0).getCell(c));
                     if (nameList.equals(listWordText)) {
@@ -53,7 +53,7 @@ public class Main {
     }
 
 
-    private static void copyFileUsingStream(File source, File dest) throws IOException {
+    private static void copyFileUsingStream(File source, File dest) throws IOException {   // создает копию файла
 
 
         InputStream is = null;
